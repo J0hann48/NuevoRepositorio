@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>        
+    </h:head>
+    <h:body>
+        <ui:composition template="./../../WEB-INF/facelets/Templates/template.xhtml">
+            <ui:define name="content">
+                <div class="container-fluid" id="contenidoPrincipal">
+                    <h1 class="fondo-usuarios">Actividades</h1>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div id="contenido_0">
+                                <div class="listadoUsuarios">
+                                    <f:view>
+                                        <h:form>                     
+                                            <ui:repeat value="#{controllerActividad.consultarActividades()}" var="actividad">
+                                                <div class="col-md-4 list-item">                                                                                                                                                        
+                                                    <label>
+                                                        Nombre actividad: <h:outputText value="#{actividad.nombre}"></h:outputText><br/>                                                        
+                                                        Fecha actividad: <b><h:outputText value="#{actividad.fechaact}"><f:convertDateTime pattern="MM/dd/yyyy" /></h:outputText></b><br/>
+                                                        Lugar actividad: <b><h:outputText value="#{actividad.lugaract} "></h:outputText></b><br/>
+                                                            Costo: <b><h:outputText value="#{actividad.costoact}"></h:outputText></b><br/>
+                                                            Jardin: <b><h:outputText value="#{actividad.jardinidjardin.nombre}"></h:outputText></b><br/>                                                        
+                                                    </label>
+                                                    <h:commandButton class="btn btn-block btn-primary" value="Editar" action="#{controllerActividad.actualizarActivida(actividad)}"></h:commandButton>
+                                                    <h:commandButton class="btn btn-block btn-danger" value="Eliminar" action="#{controllerActividad.eliminarActividad(actividad)}"></h:commandButton>                                                    
+                                                </div>
+                                            </ui:repeat>
+                                        </h:form>
+                                    </f:view>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2" id="formularioUsuario">
+                            <h3 id="tituloFormulario">Agregar Actividad</h3> 
+                            <h:form id="formUsuario">
+
+                                <div class="form-group hidden" id="nuevoUsuarioDiv">
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Id Actividad:" for="idactividad" />
+                                    <h:inputText id="idactividad" value="#{controllerActividad.actividad.idactividad}" class="form-control" title="Idactividad" required="true" requiredMessage="The Idactividad field is required."/>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Nombre:" for="nombre" />
+                                    <h:inputText id="nombre" value="#{controllerActividad.actividad.nombre}" title="Nombre" required="true" class="form-control" requiredMessage="The Nombre field is required."/>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Lugar actividad:" for="lugaract" />
+                                    <h:inputText id="lugaract" value="#{controllerActividad.actividad.lugaract}" title="Lugaract" class="form-control" required="true" requiredMessage="The Lugaract field is required."/>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Fecha actividad:" for="fechaact" />
+                                    <h:inputText id="fechaact" value="#{controllerActividad.actividad.fechaact}" class="form-control" title="Fechaact" required="true" requiredMessage="The Fechaact field is required.">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:inputText>                    
+                                </div>
+                                <div class="form-group">                                    
+                                    <h:outputLabel value="Costo:" for="costoact" />
+                                    <h:inputText id="costoact" value="#{controllerActividad.actividad.costoact}" class="form-control" title="Costoact" required="true" requiredMessage="The Costoact field is required."/>
+                                </div>
+                                <div class="form-group">                                    
+                                    <h:outputLabel value="Jardin:" for="jardinidjardin" />
+                                    <h:selectOneMenu id="jardinidjardin" value="#{controllerActividad.jardines.idjardin}" class="form-control" title="Jardinidjardin" required="true" requiredMessage="The Jardinidjardin field is required.">
+                                        <!-- TODO: update below reference to list of available items-->
+                                        <f:selectItems value="#{controllerJardin.consultarJardines()}" var="jardin" itemLabel="#{jardin.nombre}" itemValue="#{jardin.idjardin}"/>
+                                    </h:selectOneMenu>
+                                </div>                                
+                                <div class="form-group">
+                                    <h:commandButton value="Registrar" id="btnUsuarioAgregar" class="btn btn-block btn-info" action="#{controllerActividad.crearActividad()}"></h:commandButton>
+                                    <h:commandButton value="Editar" id="btnUsuarioEditar" class="btn btn-block btn-warning" action="#{controllerActividad.actualizarActivida()}"></h:commandButton>                                    
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

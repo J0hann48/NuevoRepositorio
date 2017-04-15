@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>        
+    </h:head>
+    <h:body>
+        <ui:composition template="./../../WEB-INF/facelets/Templates/template.xhtml">
+            <ui:define name="content">
+                <div class="container-fluid" id="contenidoPrincipal">
+                    <h1 class="fondo-usuarios">Padres de familia</h1>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div id="contenido_0">
+                                <div class="listadoUsuarios">
+                                    <f:view>
+                                        <h:form>                     
+                                            <ui:repeat value="#{controllerPadrefamilia.consultarPadresfamilia()}" var="padre">
+                                                <div class="col-md-4 list-item">                                                                                                                                                        
+                                                    <label>
+                                                        Identificación: <h:outputText value="#{padre.usuariosidentificacion.identificacion}"></h:outputText><br/>                                                        
+                                                        Nombre: <h:outputText value="#{padre.usuariosidentificacion.nombre1} "></h:outputText> 
+                                                        <h:outputText value="#{padre.usuariosidentificacion.nombre2}"></h:outputText><br/>
+                                                        Apellido: <b><h:outputText value="#{padre.usuariosidentificacion.apellido1} "></h:outputText>
+                                                            <h:outputText value="#{padre.usuariosidentificacion.apellido2}"></h:outputText></b><br/>
+                                                        Dirección: <b><h:outputText value="#{padre.direccion}"></h:outputText></b><br/>
+                                                        Estrato <b><h:outputText value="#{padre.estrato}"></h:outputText></b><br/>                                                        
+                                                    </label>
+                                                    <h:commandButton class="btn btn-block btn-primary" value="Editar" action="#{controllerPadrefamilia.actualizarPadresfamilia(padre)}"></h:commandButton>
+                                                    <h:commandButton class="btn btn-block btn-danger" value="Eliminar" action="#{controllerPadrefamilia.eliminarPadresfamilia(padre)}"></h:commandButton>                                                    
+                                                </div>
+                                            </ui:repeat>
+                                        </h:form>
+                                    </f:view>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2" id="formularioUsuario">
+                            <h3 id="tituloFormulario">Agregar Padre de familia</h3> 
+                            <h:form id="formUsuario">
+
+                                <div class="form-group hidden" id="nuevoUsuarioDiv">
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Id padre de familia:" for="idpadrefamilia" />
+                                    <h:inputText id="idpadrefamilia" value="#{controllerPadrefamilia.padrefamilia.idpadrefamilia}" class="form-control" title="Idpadrefamilia" required="true" requiredMessage="The Idpadrefamilia field is required."/>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Identificacion:" for="usuariosidentificacion" />
+                                    <h:selectOneMenu id="usuariosidentificacion" value="#{controllerPadrefamilia.persona.identificacion}" class="form-control" title="Usuariosidentificacion" required="true" requiredMessage="The Usuariosidentificacion field is required.">
+                                        <!-- TODO: update below reference to list of available items-->
+                                        <f:selectItems value="#{controllerPersona.consultarPersona()}" var="persona" itemLabel="#{persona.identificacion}" itemValue="#{persona.identificacion}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Direccion:" for="direccion" />
+                                    <h:inputText id="direccion" value="#{controllerPadrefamilia.padrefamilia.direccion}" title="Direccion" class="form-control" required="true" requiredMessage="The Direccion field is required."/>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Estrato:" for="estrato" />
+                                    <h:inputText id="estrato" value="#{controllerPadrefamilia.padrefamilia.estrato}" title="Estrato" class="form-control" required="true" requiredMessage="The Estrato field is required."/>
+                                </div>                                                                                                
+                                <div class="form-group">
+                                    <h:commandButton value="Registrar" id="btnUsuarioAgregar" class="btn btn-block btn-info" action="#{controllerPadrefamilia.crearPadrefamilia()}"></h:commandButton>
+                                    <h:commandButton value="Editar" id="btnUsuarioEditar" class="btn btn-block btn-warning" action="#{controllerPadrefamilia.actualizarPadresfamilia()}"></h:commandButton>    
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

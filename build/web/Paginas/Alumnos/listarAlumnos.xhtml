@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./../../WEB-INF/facelets/Templates/template.xhtml">
+            <ui:define name="content">
+                <div class="container-fluid" id="contenidoPrincipal">
+                    <h1 class="fondo-alumnos">Students</h1>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div id="contenido_0">
+                                <div class="listadoAlumnos">
+                                    <f:view>
+                                        <h:form>                     
+                                            <ui:repeat value="#{controllerAlumno.consultarAlumnos()}" var="alumno">
+                                                <div class="col-md-4 list-item">                                                                                                                                                        
+                                                    <label>
+                                                        <h:outputText value="#{alumno.idalumno}"></h:outputText><br/>
+                                                        ID: <h:outputText value="#{alumno.personaidentificacion.identificacion}"></h:outputText><br/>
+                                                        Name <h:outputText value="#{alumno.personaidentificacion.nombre1} "></h:outputText>
+                                                        <h:outputText value="#{alumno.personaidentificacion.nombre2}"></h:outputText><br/>
+                                                        Last name: <b><h:outputText value="#{alumno.personaidentificacion.apellido1} "></h:outputText>
+                                                            <h:outputText value="#{alumno.personaidentificacion.apellido2}"></h:outputText></b><br/>
+                                                            Birth day: <b><h:outputText value="#{alumno.fechaNacimiento}"><f:convertDateTime pattern="MM/dd/yyyy" /></h:outputText></b><br/>
+                                                        Date of admission: <b><h:outputText value="#{alumno.fechaingreso}"><f:convertDateTime pattern="MM/dd/yyyy" /></h:outputText></b><br/>
+                                                        Departure date: <b><h:outputText value="#{alumno.fechasalida}"><f:convertDateTime pattern="MM/dd/yyyy" /></h:outputText></b><br/>
+                                                        Reason: <b><h:outputText value="#{alumno.observaciones}"></h:outputText></b><br/>
+                                                        Parent: <b><h:outputText value="#{alumno.padrefamiliaidentificacion.usuariosidentificacion.nombre1} "></h:outputText></b>
+                                                        <h:outputText value="#{alumno.padrefamiliaidentificacion.usuariosidentificacion.nombre2} "></h:outputText>
+                                                        <h:outputText value="#{alumno.padrefamiliaidentificacion.usuariosidentificacion.apellido1} "></h:outputText>
+                                                        <h:outputText value="#{alumno.padrefamiliaidentificacion.usuariosidentificacion.apellido2} "></h:outputText>
+                                                    </label>
+                                                    <h:commandButton class="btn btn-block btn-primary" value="Edit" action="#{controllerAlumno.actualizarAlumnos(alumno)}"></h:commandButton>
+                                                    <h:commandButton class="btn btn-block btn-danger" value="Delete" action="#{controllerAlumno.eliminarAlumnos(alumno)}"></h:commandButton>                                                    
+                                                </div>
+                                            </ui:repeat>
+                                        </h:form>
+                                    </f:view>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2" id="formularioAlumno">
+                            <h3 id="tituloFormulario">Insert student</h3> 
+                            <h:form id="formAlumno">
+
+                                <div class="form-group hidden" id="nuevoUsuarioDiv">
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Id student:" for="idalumno" />
+                                    <h:inputText id="idalumno" value="#{controllerAlumno.alumno.idalumno}" title="Idalumno" class="form-control" required="true" requiredMessage="The Idalumno field is required."/>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="ID:" for="personaidentificacion" />
+                                    <h:selectOneMenu id="personaidentificacion" value="#{controllerAlumno.persona.identificacion}" class="form-control" title="Personaidentificacion" required="true" requiredMessage="The Personaidentificacion field is required.">
+                                        <!-- TODO: update below reference to list of available items-->
+                                        <f:selectItems value="#{controllerPersona.consultarPersona()}" var="persona" itemLabel="#{persona.identificacion}" itemValue="#{persona.identificacion}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Birth day:" for="fechaNacimiento" />
+                                    <h:inputText id="fechaNacimiento" value="#{controllerAlumno.alumno.fechaNacimiento}" class="form-control" title="FechaNacimiento" required="true" a:placeholder="MM/dd/yyyy" requiredMessage="The FechaNacimiento field is required.">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:inputText>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Date of admission:" for="fechaingreso" />
+                                    <h:inputText id="fechaingreso" value="#{controllerAlumno.alumno.fechaingreso}" title="Fechaingreso" required="true" a:placeholder="MM/dd/yyyy" requiredMessage="The Fechaingreso field is required.">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:inputText>
+                                </div>
+                                <div class="form-group">                                    
+                                    <h:outputLabel value="Departure date:" for="fechasalida" />
+                                    <h:inputText id="fechasalida" value="#{controllerAlumno.alumno.fechasalida}" a:placeholder="MM/dd/yyyy" title="Fechasalida">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:inputText>
+                                </div>
+
+                                <div class="form-group">                                    
+                                    <h:outputLabel value="Observations:" for="observaciones" />
+                                    <h:inputText id="observaciones" value="#{controllerAlumno.alumno.observaciones}" class="form-control" title="Observaciones"/>
+                                </div>
+                                <div class="form-group">                                    
+                                    <h:outputLabel value="Parent:" for="padrefamiliaidentificacion" />
+                                    <h:selectOneMenu id="padrefamiliaidentificacion" value="#{controllerAlumno.padrefamilia.idpadrefamilia}" class="form-control" title="Padrefamiliaidentificacion" required="true" requiredMessage="The Padrefamiliaidentificacion field is required.">
+                                        <!-- TODO: update below reference to list of available items-->
+                                        <f:selectItems value="#{controllerPadrefamilia.consultarPadresfamilia()}" var="padre" itemLabel="#{padre.usuariosidentificacion.identificacion}" itemValue="#{padre.idpadrefamilia}"/>
+                                    </h:selectOneMenu>                                 
+                                </div>
+                                <div class="form-group">
+                                    <h:commandButton value="Create" id="btnAlumnoAgregar" class="btn btn-block btn-info" action="#{controllerAlumno.crearAlumnos()}"></h:commandButton>
+                                    <h:commandButton value="Edit" id="btnAlumnoEditar" class="btn btn-block btn-warning" action="#{controllerAlumno.actualizarAlumnos()}"></h:commandButton>                                    
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/facelets/Templates/template.xhtml">
+
+            <ui:define name="top">
+                <h:form>
+                    <nav class="navbar navbar-default navbar-fixed-top">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="inicioPadrefamilia.xhtml"><h:graphicImage library="img" name="logo_header.png" class="img-responsive" /></a>
+                            </div>
+                            <div id="navbar" class="navbar-collapse collapse">                                                                                               
+                                <ul class="nav navbar-nav" style="display: block;">  
+                                    <li><a href="NutricionAlumnos/listarNutricionalumnos.xhtml">Nutricion alumno</a></li>
+                                    <li><a href="Asignaturas/listarAsignaturas.xhtml">Asignaturas</a></li>                                
+                                    <li><a href="Matriculas/listarMatriculas.xhtml">Matriculas</a></li>                                
+                                    <li><a href="Actividades/listarActividades.xhtml">Actividades</a></li>
+                                    <li><a href="Sugerencias/listarSugerencias.xhtml">Sugerencias</a></li>
+                                </ul>
+                                <ul class="nav navbar-nav navbar-right">                                
+                                    <li><h:commandLink action="#{controllerUsuario.logOut()}"><b>Logout</b></h:commandLink></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="content">
+                <div class="container-fluid" id="contenidoPrincipal">
+                    <h1 class="fondo-inicio">Bienvenido <b>Marcela lopez</b></h1>
+                    <div class="row">
+                        <div class="col-md-10">                            
+                            <!-- Padre -->
+                            <div id="contenido_2" class="">
+                                <div class="row">
+                                    <div class="col-md-6 home-item fondo-asignaturas">
+                                        <h4>Asignaturas</h4>
+                                        <div class="col-md-2">
+                                            <i class="fa fa-book fa-fw fa-3x"></i>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <p>
+                                                <b>12</b> Inscritas / <small><b>2</b> Pendientes</small>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <ul class="nav nav-pills">
+                                                <li role="presentation"><a href="Asignaturas/listarAsignaturas.xhtml">Ver Todos</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 home-item fondo-calificaciones">
+                                        <h4>Calificaciones</h4>
+                                        <div class="col-md-2">
+                                            <i class="fa fa-check fa-fw fa-3x"></i>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <p>
+                                                <b>12</b> Inscritas / <small><b>2</b> Pendientes</small>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <ul class="nav nav-pills">
+                                                <li role="presentation"><a href="Notas/listarNotas.xhtml">Ver Todos</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 home-item fondo-actividades">
+                                        <h4>Actividades</h4>
+                                        <div class="col-md-2">
+                                            <i class="fa fa-paint-brush fa-fw fa-3x"></i>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <p>
+                                                <b>25</b> Reportados / <small><b>9</b> Activos</small>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <ul class="nav nav-pills">
+                                                <li role="presentation"><a href="Actividades/listarActividades.xhtml">Ver Todos</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 home-item fondo-desarrollo">
+                                        <h4>Desarrollo</h4>
+                                        <div class="col-md-2">
+                                            <i class="fa fa-bar-chart fa-fw fa-3x"></i>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <p>
+                                                <b>25</b> Reportados / <small><b>9</b> Activos</small>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <ul class="nav nav-pills">
+                                                <li role="presentation"><a href="NutricionAlumnos/listarNutricionalumnos.xhtml">Ver Todos</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 home-item fondo-matriculas">
+                                        <h4>Matriculas</h4>
+                                        <div class="col-md-2">
+                                            <i class="fa fa-clock-o fa-fw fa-3x"></i>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <p>
+                                                <b>15</b> Total / <small><b>4</b> Hoy</small>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <ul class="nav nav-pills">
+                                                <!--<li role="presentation"><a href="#">Agregar Nuevo</a></li>-->
+                                                <li role="presentation"><a href="Matriculas/listarMatriculas.xhtml">Ver Todos</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Padre -->   
+                        </div>
+                        <div class="col-md-2" id="datosUsuario"><h4>Mis Datos</h4><h:graphicImage library="img" name="usuario_2.png" class="img-responsive"></h:graphicImage><h2>Marcela Diana Lopez</h2><p>animus.10@hotmail.com</p><a class="btn btn-block btn-info" href="#">Editar Perfil</a></div>
+                    </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

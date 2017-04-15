@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Idmatricula:" for="idmatricula" />
+                    <h:inputText id="idmatricula" value="#{controllerMatricula.matricula.idmatricula}" title="Idmatricula" required="true" requiredMessage="The Idmatricula field is required."/>
+                    <h:outputLabel value="Fechamatricula:" for="fechamatricula" />
+                    <h:inputText id="fechamatricula" value="#{controllerMatricula.matricula.fechamatricula}" title="Fechamatricula" required="true" a:placeholder="MM/dd/yyyy" requiredMessage="The Fechamatricula field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="Fechafinmatricula:" for="fechafinmatricula" />
+                    <h:inputText id="fechafinmatricula" value="#{controllerMatricula.matricula.fechafinmatricula}" title="Fechafinmatricula" a:placeholder="MM/dd/yyyy" required="true" requiredMessage="The Fechafinmatricula field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="Valormatricula:" for="valormatricula" />
+                    <h:inputText id="valormatricula" value="#{controllerMatricula.matricula.valormatricula}" title="Valormatricula" required="true" requiredMessage="The Valormatricula field is required."/>
+                    <h:outputLabel value="Descuento:" for="descuento" />
+                    <h:inputText id="descuento" value="#{controllerMatricula.matricula.descuento}" title="Descuento" required="true" requiredMessage="The Descuento field is required."/>
+                    <h:outputLabel value="TotalMatricula:" for="totalMatricula" />
+                    <h:inputText id="totalMatricula" value="#{controllerMatricula.matricula.totalMatricula}" title="TotalMatricula" required="true" requiredMessage="The TotalMatricula field is required."/>
+                    <h:outputLabel value="Alumnosidentificacion:" for="alumnosidentificacion" />
+                    <h:selectOneMenu id="alumnosidentificacion" value="#{controllerMatricula.alumno.idalumno}" title="Alumnosidentificacion" required="true" requiredMessage="The Alumnosidentificacion field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{controllerAlumno.consultarAlumnos()}" var="alumno" itemLabel="#{alumno.personaidentificacion.identificacion}" itemValue="#{alumno.idalumno}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Jardinidjardin:" for="jardinidjardin" />
+                    <h:selectOneMenu id="jardinidjardin" value="#{controllerMatricula.jardin.idjardin}" title="Jardinidjardin" required="true" requiredMessage="The Jardinidjardin field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{controllerJardin.consultarJardines()}" var="jardin" itemValue="#{jardin.idjardin}" itemLabel="#{jardin.nombre}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandButton value="Registrar" action="#{controllerMatricula.actualizarMatricula()}"></h:commandButton>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">                    
+                    <h:outputLabel value="Edad:" for="edad" />
+                    <h:inputText id="edad" value="#{controllerCrecimiento.crecimiento.edad}" title="Edad" required="true" requiredMessage="The Edad field is required."/>
+                    <h:outputLabel value="PesoMedio:" for="pesoMedio" />
+                    <h:inputText id="pesoMedio" value="#{controllerCrecimiento.crecimiento.pesoMedio}" title="PesoMedio" required="true" requiredMessage="The PesoMedio field is required."/>
+                    <h:outputLabel value="Talla:" for="talla" />
+                    <h:inputText id="talla" value="#{controllerCrecimiento.crecimiento.talla}" title="Talla" required="true" requiredMessage="The Talla field is required."/>
+                    <h:outputLabel value="PesoEstatura:" for="pesoEstatura" />
+                    <h:inputText id="pesoEstatura" value="#{controllerCrecimiento.crecimiento.pesoEstatura}" title="PesoEstatura" required="true" requiredMessage="The PesoEstatura field is required."/>
+                </h:panelGrid>
+                <h:commandButton value="Registrar" action="#{controllerCrecimiento.actualizarCrecimiento()}"></h:commandButton>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

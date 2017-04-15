@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>        
+    </h:head>
+    <h:body>
+        <ui:composition template="./../../WEB-INF/facelets/Templates/template.xhtml">
+            <ui:define name="content">
+                <div class="container-fluid" id="contenidoPrincipal">
+                    <h1 class="fondo-usuarios">Usuarios</h1>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div id="contenido_0">
+                                <div class="listadoUsuarios">
+                                    <f:view>
+                                        <h:form>                     
+                                            <ui:repeat value="#{controllerUsuario.consultarUsuarios()}" var="usuario">
+                                                <div class="col-md-4 list-item">                                                                                                                                                        
+                                                    <label>
+                                                        Identificación: <h:outputText value="#{usuario.personaidentificacion.identificacion}"></h:outputText><br/>                                                        
+                                                        Nombre: <h:outputText value="#{usuario.personaidentificacion.nombre1} "></h:outputText> 
+                                                        <h:outputText value="#{usuario.personaidentificacion.nombre2}"></h:outputText><br/>
+                                                        Apellido: <b><h:outputText value="#{usuario.personaidentificacion.apellido1} "></h:outputText>
+                                                            <h:outputText value="#{usuario.personaidentificacion.apellido2}"></h:outputText></b><br/>
+                                                        Contraseña: <b><h:outputText value="#{usuario.contrasena}"></h:outputText></b><br/>
+                                                        Correo electronico: <b><h:outputText value="#{usuario.mail}"></h:outputText></b><br/>
+                                                        Telefono: <b><h:outputText value="#{usuario.telefono}"></h:outputText></b><br/>
+                                                        Eatado: <b><h:outputText value="#{usuario.estado}"></h:outputText></b><br/>
+                                                    </label>
+                                                    <h:commandButton class="btn btn-block btn-primary" value="Editar" action="#{controllerUsuario.actualizarUsuarios(usuario)}"></h:commandButton>
+                                                    <h:commandButton class="btn btn-block btn-danger" value="Eliminar" action="#{controllerUsuario.eliminarUsuario(usuario)}"></h:commandButton>                                                    
+                                                </div>
+                                            </ui:repeat>
+                                        </h:form>
+                                    </f:view>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2" id="formularioUsuario">
+                            <h3 id="tituloFormulario">Agregar Usuario</h3> 
+                            <h:form id="formUsuario">
+
+                                <div class="form-group hidden" id="nuevoUsuarioDiv">
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Identificacion:" for="personaidentificacion" />
+                                    <h:selectOneMenu id="personaidentificacion" value="#{controllerUsuario.persona.identificacion}" class="form-control" title="Personaidentificacion" required="true" requiredMessage="The Personaidentificacion field is required.">
+                                        <!-- TODO: update below reference to list of available items-->
+                                        <f:selectItems value="#{controllerPersona.consultarPersona()}" var="persona" itemLabel="#{persona.identificacion}" itemValue="#{persona.identificacion}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Contraseña:" for="contrasena" />
+                                    <h:inputText id="contrasena" value="#{controllerUsuario.usuario.contrasena}" title="Contrasena" class="form-control" required="true" requiredMessage="The Contrasena field is required."/>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Correo electronico:" for="mail" />
+                                    <h:inputText id="mail" value="#{controllerUsuario.usuario.mail}" title="Mail" class="form-control" required="true" requiredMessage="The Mail field is required."/>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Estado:" for="estado" />
+                                    <h:selectOneMenu id="estado" value="#{controllerUsuario.usuario.estado}" title="Estado" class="form-control" required="true" requiredMessage="The Estado field is required.">
+                                        <f:selectItem itemValue="Activo" itemLabel="Activo"></f:selectItem>
+                                        <f:selectItem itemValue="Inactivo" itemLabel="Inactivo"></f:selectItem>
+                                    </h:selectOneMenu>                    
+                                </div>
+                                <div class="form-group">                                    
+                                    <h:outputLabel value="Telefono:" for="telefono" />
+                                    <h:inputText id="telefono" value="#{controllerUsuario.usuario.telefono}" class="form-control" title="Telefono" />                    
+                                </div>
+                                <h:outputLabel value="Rol" for="rol" />
+                                <h:selectOneMenu value="#{contr}">
+                                    <f:selectItems></f:selectItems>
+                                </h:selectOneMenu>
+                                <div class="form-group">
+                                    <h:commandButton value="Registrar" id="btnUsuarioAgregar" class="btn btn-block btn-info" action="#{controllerUsuario.crearUsuarios()}"></h:commandButton>
+                                    <h:commandButton value="Editar" id="btnUsuarioEditar" class="btn btn-block btn-warning" action="#{controllerUsuario.actualizarUsuarios()}"></h:commandButton>                                    
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

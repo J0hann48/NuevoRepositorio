@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Idsugerencia:" for="idsugerencia" />
+                    <h:inputText id="idsugerencia" value="#{controllerSugerencia.sugerencia.idsugerencia}" title="Idsugerencia" required="true" requiredMessage="The Idsugerencia field is required."/>
+                    <h:outputLabel value="Descripcion:" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{controllerSugerencia.sugerencia.descripcion}" title="Descripcion" required="true" requiredMessage="The Descripcion field is required."/>
+                    <h:outputLabel value="Asunto:" for="asunto" />
+                    <h:inputText id="asunto" value="#{controllerSugerencia.sugerencia.asunto}" title="Asunto" required="true" requiredMessage="The Asunto field is required."/>
+                </h:panelGrid>
+                <h:commandButton value="Registrar" action="#{controllerSugerencia.actualizarSugerencia()}"></h:commandButton>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

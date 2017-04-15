@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>        
+    </h:head>
+    <h:body>
+        <ui:composition template="./../../WEB-INF/facelets/Templates/template.xhtml">
+            <ui:define name="content">
+                <div class="container-fluid" id="contenidoPrincipal">
+                    <h1 class="fondo-usuarios">Jardines</h1>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div id="contenido_0">
+                                <div class="listadoUsuarios">
+                                    <f:view>
+                                        <h:form>                     
+                                            <ui:repeat value="#{controllerJardin.consultarJardines()}" var="jardin">
+                                                <div class="col-md-4 list-item">                                                                                                                                                        
+                                                    <label>
+                                                        Nombre jardin: <h:outputText value="#{jardin.nombre}"></h:outputText><br/>                                                        
+                                                        Dirección: <b><h:outputText value="#{jardin.direccion}"></h:outputText></b><br/>
+                                                        Telefono fijo: <b><h:outputText value="#{jardin.telefonofijo} "></h:outputText></b><br/>
+                                                        Presupuesto: <b><h:outputText value="#{jardin.presupuesto}"></h:outputText></b><br/>                                                        
+                                                    </label>
+                                                    <h:commandButton class="btn btn-block btn-primary" value="Editar" action="#{controllerJardin.actualizarJardin(jardin)}"></h:commandButton>
+                                                    <h:commandButton class="btn btn-block btn-danger" value="Eliminar" action="#{controllerJardin.eliminarJardin(jardin)}"></h:commandButton>
+                                                </div>
+                                            </ui:repeat>
+                                        </h:form>
+                                    </f:view>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2" id="formularioUsuario">
+                            <h3 id="tituloFormulario">Agregar Jardin</h3> 
+                            <h:form id="formUsuario">
+
+                                <div class="form-group hidden" id="nuevoUsuarioDiv">
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Id jardin:" for="idjardin" />
+                                    <h:inputText id="idjardin" value="#{controllerJardin.jardin.idjardin}" class="form-control" title="Idjardin" required="true" requiredMessage="The Idjardin field is required."/>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Nombre:" for="nombre" />
+                                    <h:inputText id="nombre" value="#{controllerJardin.jardin.nombre}" title="Nombre" class="form-control" required="true" requiredMessage="The Nombre field is required."/>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Direccion:" for="direccion" />
+                                    <h:inputText id="direccion" value="#{controllerJardin.jardin.direccion}" title="Direccion" class="form-control" required="true" requiredMessage="The Direccion field is required."/>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Telefono fijo:" for="telefonofijo" />
+                                    <h:inputText id="telefonofijo" value="#{controllerJardin.jardin.telefonofijo}" title="Telefonofijo" class="form-control" required="true" requiredMessage="The Telefonofijo field is required."/>                
+                                </div>
+                                <div class="form-group">                                    
+                                    <h:outputLabel value="Presupuesto:" for="presupuesto" />
+                                    <h:inputText id="presupuesto" value="#{controllerJardin.jardin.presupuesto}" class="form-control" title="Presupuesto" required="true" requiredMessage="The Presupuesto field is required."/>
+                                </div>                                                                
+                                <div class="form-group">
+                                    <h:commandButton value="Registrar" id="btnUsuarioAgregar" class="btn btn-block btn-info" action="#{controllerJardin.crearJardin()}"></h:commandButton>
+                                    <h:commandButton value="Editar" id="btnUsuarioEditar" class="btn btn-block btn-warning" action="#{controllerJardin.actualizarJardin()}"></h:commandButton>                                    
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

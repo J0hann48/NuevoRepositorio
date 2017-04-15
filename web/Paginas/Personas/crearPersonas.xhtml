@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Identificacion:" for="identificacion" />
+                    <h:inputText id="identificacion" value="#{controllerPersona.persona.identificacion}" title="Identificacion" required="true" requiredMessage="The Identificacion field is required."/>
+                    <h:outputLabel value="Nombre1:" for="nombre1" />
+                    <h:inputText id="nombre1" value="#{controllerPersona.persona.nombre1}" title="Nombre1" required="true" requiredMessage="The Nombre1 field is required."/>
+                    <h:outputLabel value="Nombre2:" for="nombre2" />
+                    <h:inputText id="nombre2" value="#{controllerPersona.persona.nombre2}" title="Nombre2" required="true" requiredMessage="The Nombre2 field is required."/>
+                    <h:outputLabel value="Apellido1:" for="apellido1" />
+                    <h:inputText id="apellido1" value="#{controllerPersona.persona.apellido1}" title="Apellido1" required="true" requiredMessage="The Apellido1 field is required."/>
+                    <h:outputLabel value="Apellido2:" for="apellido2" />
+                    <h:inputText id="apellido2" value="#{controllerPersona.persona.apellido2}" title="Apellido2" required="true" requiredMessage="The Apellido2 field is required."/>
+                    <h:outputLabel value="Tipodocumento:" for="tipodocumento" />
+                    <h:selectOneMenu id="tipodocumento" value="#{controllerPersona.persona.tipodocumento}" title="Tipodocumento">
+                        <f:selectItem itemLabel="Cedula" itemValue="Cedula"></f:selectItem>
+                        <f:selectItem itemLabel="Cedula extrangeria" itemValue="Cedula de extrangeria"></f:selectItem>
+                        <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte"></f:selectItem>
+                    </h:selectOneMenu>                    
+                    <h:outputLabel value="Sexo:" for="sexo" />
+                    <h:selectOneMenu id="sexo" value="#{controllerPersona.persona.sexo}" title="Sexo" required="true" requiredMessage="The Sexo field is required.">
+                        <f:selectItem itemLabel="F" itemValue="F"></f:selectItem>
+                        <f:selectItem itemLabel="M" itemValue="M"></f:selectItem>
+                    </h:selectOneMenu>                    
+                </h:panelGrid>
+                <h:commandButton value="Registrar" id="btn-crearPersona" action="#{controllerPersona.crearPersona()}"></h:commandButton>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

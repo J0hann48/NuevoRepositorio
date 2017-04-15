@@ -1,0 +1,227 @@
+body {
+    font-family: 'Roboto Condensed';
+    background-color: #fff;
+    color: #a8a8a8;
+}
+
+a{
+    cursor: pointer
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 400;
+}
+
+/*h1, h2, h3, p{
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+}*/
+
+h1{
+    padding: 5px 10px;
+    color: #fff;
+}
+
+h2{
+    font-size: 20px;
+}
+
+h3{
+    font-size: 16px;
+    font-style: italic;
+}
+
+label{
+    width: 100%;
+}
+
+.margin-auto{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p a{
+    color: #fff;
+    padding: 10px;
+}
+p a:hover{
+    color: #ff0600;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #f5f5f5;
+    text-align: center;
+    padding: 5px;
+    font-size: 11px;
+}
+.footer p a{
+    color: #bb49c8;
+}
+
+/**/
+#formularioRegistro label{
+    color: #2ea7d2;
+}
+#formularioRegistro h3{
+    color: #d22ecc;
+    margin: 0 auto;
+}
+#formularioRegistro .form-control{
+    border-color: #6cb0c4;
+}
+#login-inferior>div{
+    height: 220px;
+}
+#login-inferior h2{
+    font-size: 14px;
+    text-align: left;
+}
+#informacion-general{
+    background: #ffffff;
+}
+#informacion-padre{
+    background: #ffffff;
+}
+#formulario-ingreso{
+    background: #ffffff;
+}
+#loginStatus{
+    padding: 2px 5px;
+    text-align: center;
+    font-size: 10px;
+    color: #333;
+}
+#contenidoPrincipal{
+    padding-top: 55px;
+    padding-bottom: 55px;
+}
+#contenidoPrincipal .contenidoDiv{
+    display: none;
+}
+/*#contenidoPrincipal>div>div>div{
+    display: none;
+}*/
+
+#contenidoPrincipal ul.nav-pills{
+    float: right;
+}
+
+.home-item{
+    height: 150px;
+    border: 2px solid #fff;
+}
+.home-item h4{
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    padding: 10px 0;
+}
+.home-item i{
+    color: #fff;
+}
+.home-item p{
+    color: #fff;
+    font-size: 25px;
+    margin-bottom: 0;
+}
+.fondo-inicio{
+    background: #9d9d9d;
+}
+.fondo-usuarios{
+    background: #00c0ff;
+}
+.fondo-alumnos{
+    background: #C92AA4;
+}
+.fondo-profesores{
+    background: #B1AEAC;
+}
+.fondo-asignaturas{
+    background: #B1AEAC;
+}
+.fondo-matriculas{
+    background: #C92AA4;
+}
+.fondo-desarrollo{
+    background: #C92AA4;
+}
+.fondo-recordatorios{
+    background: #00c0ff;
+}
+.fondo-actividades{
+    background: #B1AEAC;
+}
+.fondo-calificaciones{
+    background: #00c0ff;
+}
+.barra-holder{
+    float: left;
+    text-align: center;
+}
+.barra-desarrollo{
+    background: #bebebe;
+    width: 40px;
+    border: 1px solid #444;
+}
+.barra-holder p{
+    font-size: 10px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.list-item{
+    background: #efefef;
+    padding: 5px;
+}
+.list-item label{
+    display: table;
+    margin: 1px;
+    background: #f7f7f7;
+    width: 100%;
+    padding: 10px;
+}
+.list-item label input{
+    float: right;
+}
+.list-item label i{
+    float: left;
+    margin: 5px;
+}
+
+#principalMenu{
+    display: none;
+}
+#datosUsuario{
+    background: #efefef;
+    text-align: center;
+    border-radius: 10px 0 0 10px;
+    padding-bottom: 15px;
+}
+
+.img-responsive{
+    margin: auto;
+}
+
+.nav-pills{
+    margin-top: 6px;
+}
+.nav-pills>li>a{
+    padding: 4px 15px;
+    background: #fff;
+    color: #333;
+    font-size: 12px;
+}
+.navbar-brand{
+    padding: 5px;
+}
+
+.invalido{
+    background: #f00;
+    color: #fff;
+}

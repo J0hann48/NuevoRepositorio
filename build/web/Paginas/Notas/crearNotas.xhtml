@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="idNota" for="idnota" />
+                    <h:inputText id="idnota" value="#{controllerNota.nota.idnota}" title="IdNota" required="true" requiredMessage="The IdNota field is requeride" />
+                    <h:outputLabel value="Valornota:" for="valornota" />
+                    <h:inputText id="valornota" value="#{controllerNota.nota.valornota}" title="Valornota" required="true" requiredMessage="The Valornota field is required."/>
+                    <h:outputLabel value="Descripcion:" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{controllerNota.nota.descripcion}" title="Descripcion" required="true" requiredMessage="The Descripcion field is required."/>
+                    <h:outputLabel value="Asignaturasidasignatura:" for="asignaturasidasignatura" />
+                    <h:selectOneMenu id="asignaturasidasignatura" value="#{controllerNota.asignatura.idasignatura}" title="Asignaturasidasignatura" required="true" requiredMessage="The Asignaturasidasignatura field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{controllerAsignatura.consultarAsignatura()}" var="asignatura" itemLabel="#{asignatura.nombre}" itemValue="#{asignatura.idasignatura}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandButton value="Registrar" action="#{controllerNota.crearNotas()}"></h:commandButton>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

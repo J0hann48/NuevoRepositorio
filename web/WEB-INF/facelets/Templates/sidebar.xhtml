@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition>
+        <h:form>
+            <nav class="navbar navbar-default navbar-fixed-top">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a  class="navbar-brand" href="http://localhost:8080/ProyectoJardinWeb/faces/Paginas/inicio.xhtml"><h:graphicImage library="img" name="logo_header.png" class="img-responsive" /></a>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">                               
+                            <ul class="nav navbar-nav ">                                
+                                <li class="dropdown" id="archivosMenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Management users<span class="caret"></span></a>
+                                    <ul class="dropdown-menu" id="archivosMenu">
+                                        <li class="dropdown-header"></li> 
+                                        
+                                        <li><a href="http://localhost:8080/ProyectoJardinWeb/faces/Paginas/Personas/listarPersonas.xhtml">Consult people</a></li>
+                                        <li><a href="http://localhost:8080/ProyectoJardinWeb/faces/Paginas/Usuarios/listarUsuarios.xhtml">Consult user</a></li>
+                                        <li><a href="http://localhost:8080/ProyectoJardinWeb/faces/Paginas/PadresdeFamilia/listarPadresfamilia.xhtml">Consult parents</a></li>
+                                        <li><a href="http://localhost:8080/ProyectoJardinWeb/faces/Paginas/MadresComunitarias/listarMadrecomunitaria.xhtml">Consult home mothers</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav ">                                
+                                <li class="dropdown" id="archivosMenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Management students<span class="caret"></span></a>
+                                    <ul class="dropdown-menu" id="archivosMenu">
+                                        <li class="dropdown-header"></li> 
+                                        <li><a href="http://localhost:8080/ProyectoJardinWeb/faces/Paginas/Alumnos/listarAlumnos.xhtml">Consult students</a></li>
+                                        <li><a href="http://localhost:8080/ProyectoJardinWeb/faces/Paginas/NutricionAlumnos/listarNutricionalumnos.xhtml">Nutrition of student</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav" style="display: block;">                                                                
+                                <li><a href="http://localhost:8080/ProyectoJardinWeb/faces/Paginas/Asignaturas/listarAsignaturas.xhtml">Subjects</a></li>
+                                <li><a href="http://localhost:8080/ProyectoJardinWeb/faces/Paginas/Notas/listarNotas.xhtml">Qualification</a></li>
+                                <li><a href="http://localhost:8080/ProyectoJardinWeb/faces/Paginas/Matriculas/listarMatriculas.xhtml">Registration</a></li>                                
+                                <li><a href="http://localhost:8080/ProyectoJardinWeb/faces/Paginas/Actividades/listarActividades.xhtml">Activitys</a></li>
+                                <li><a href="http://localhost:8080/ProyectoJardinWeb/faces/Paginas/Sugerencias/listarSugerencias.xhtml">Suggestion</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">                                
+                                <li><h:commandLink action="#{controllerUsuario.logOut()}"><b>Logout</b></h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+        </h:form>
+    </ui:composition>
+</html>
+

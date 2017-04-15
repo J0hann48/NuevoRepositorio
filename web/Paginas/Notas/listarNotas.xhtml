@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>       
+    </h:head>
+    <h:body>
+        <ui:composition template="./../../WEB-INF/facelets/Templates/template.xhtml">
+            <ui:define name="content">
+                <div class="container-fluid" id="contenidoPrincipal">
+                    <h1 class="fondo-usuarios">Calificaciones</h1>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div id="contenido_0">
+                                <div class="listadoUsuarios">
+                                    <f:view>
+                                        <h:form>                     
+                                            <ui:repeat value="#{controllerNota.consultarNotas()}" var="nota">
+                                                <div class="col-md-4 list-item">                                                                                                                                                        
+                                                    <label>
+                                                        Asignatura: <h:outputText value="#{nota.asignaturasidasignatura.nombre}"></h:outputText><br/>
+                                                        Nota: <h:outputText value="#{nota.valornota}"></h:outputText><br/>
+                                                        Descripción: <h:outputText value="#{nota.descripcion} "></h:outputText>                                                         
+                                                    </label>
+                                                    <h:commandButton class="btn btn-block btn-primary" value="Editar" action="#{controllerNota.actualizarNotas(nota)}"></h:commandButton>
+                                                    <h:commandButton class="btn btn-block btn-danger" value="Eliminar" action="#{controllerNota.eliminarNotas(nota)}"></h:commandButton>                                                    
+                                                </div>
+                                            </ui:repeat>
+                                        </h:form>
+                                    </f:view>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2" id="formularioUsuario">
+                            <h3 id="tituloFormulario">Agregar Calificación</h3> 
+                            <h:form id="formUsuario">
+                                <div class="form-group hidden" id="nuevoUsuarioDiv">
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Id nota" for="idnota" />
+                                    <h:inputText id="idnota" value="#{controllerNota.nota.idnota}" title="IdNota" required="true"  class="form-control" requiredMessage="The IdNota field is requeride" />
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Valor nota:" for="valornota" />
+                                    <h:inputText id="valornota" value="#{controllerNota.nota.valornota}" title="Valornota" class="form-control" required="true" requiredMessage="The Valornota field is required."/>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Descripcion:" for="descripcion" />
+                                    <h:inputText id="descripcion" value="#{controllerNota.nota.descripcion}" title="Descripcion" class="form-control" required="true" requiredMessage="The Descripcion field is required."/>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Asignatura:" for="asignaturasidasignatura" />
+                                    <h:selectOneMenu id="asignaturasidasignatura" value="#{controllerNota.asignatura.idasignatura}" class="form-control" title="Asignaturasidasignatura" required="true" requiredMessage="The Asignaturasidasignatura field is required.">
+                                        <!-- TODO: update below reference to list of available items-->
+                                        <f:selectItems value="#{controllerAsignatura.consultarAsignatura()}" var="asignatura" itemLabel="#{asignatura.nombre}" itemValue="#{asignatura.idasignatura}"/>
+                                    </h:selectOneMenu>
+                                </div>                                
+                                <div class="form-group">
+                                    <h:commandButton value="Registrar" id="btnUsuarioAgregar" class="btn btn-block btn-info" action="#{controllerNota.crearNotas()}"></h:commandButton>
+                                    <h:commandButton value="Editar" id="btnUsuarioEditar" class="btn btn-block btn-warning" action="#{controllerNota.actualizarNotas()}"></h:commandButton>                                    
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

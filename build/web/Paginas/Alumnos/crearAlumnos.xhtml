@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Idalumno:" for="idalumno" />
+                    <h:inputText id="idalumno" value="#{controllerAlumno.alumno.idalumno}" title="Idalumno" required="true" requiredMessage="The Idalumno field is required."/>
+                    <h:outputLabel value="Personaidentificacion:" for="personaidentificacion" />
+                    <h:selectOneMenu id="personaidentificacion" value="#{controllerAlumno.persona.identificacion}" title="Personaidentificacion" required="true" requiredMessage="The Personaidentificacion field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{controllerPersona.consultarPersona()}" var="persona" itemLabel="#{persona.identificacion}" itemValue="#{persona.identificacion}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="FechaNacimiento:" for="fechaNacimiento" />
+                    <h:inputText id="fechaNacimiento" value="#{controllerAlumno.alumno.fechaNacimiento}" title="FechaNacimiento" required="true" a:placeholder="MM/dd/yyyy" requiredMessage="The FechaNacimiento field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="Fechaingreso:" for="fechaingreso" />
+                    <h:inputText id="fechaingreso" value="#{controllerAlumno.alumno.fechaingreso}" title="Fechaingreso" required="true" a:placeholder="MM/dd/yyyy" requiredMessage="The Fechaingreso field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="Fechasalida:" for="fechasalida" />
+                    <h:inputText id="fechasalida" value="#{controllerAlumno.alumno.fechasalida}" a:placeholder="MM/dd/yyyy" title="Fechasalida" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="Observaciones:" for="observaciones" />
+                    <h:inputText id="observaciones" value="#{controllerAlumno.alumno.observaciones}" title="Observaciones" />
+                    <h:outputLabel value="Padrefamiliaidentificacion:" for="padrefamiliaidentificacion" />
+                    <h:selectOneMenu id="padrefamiliaidentificacion" value="#{controllerAlumno.padrefamilia.idpadrefamilia}" title="Padrefamiliaidentificacion" required="true" requiredMessage="The Padrefamiliaidentificacion field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{controllerPadrefamilia.consultarPadresfamilia()}" var="padre" itemLabel="#{padre.usuariosidentificacion.identificacion}" itemValue="#{padre.idpadrefamilia}"/>
+                    </h:selectOneMenu>                    
+                </h:panelGrid>
+                <h:commandButton value="Registrar" action="#{controllerAlumno.crearAlumnos()}"></h:commandButton>
+            </h:form>
+       </f:view>
+    </h:body>
+</html>
+
