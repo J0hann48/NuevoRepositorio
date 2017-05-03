@@ -3,7 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
     <h:head>
 
     </h:head>
@@ -16,21 +18,75 @@
                         <div class="col-md-10">
                             <div id="contenido_0">
                                 <div class="listadoUsuarios">
+                                    <!--                                    <f:view>
+                                                                            <h:form>
+                                                                                <ui:repeat value="#controllerPersona.consultarPersona()}" var="persona">
+                                                                                    <div class="col-md-4 list-item">                                                                                                                                                        
+                                                                                        <label>
+                                                                                            Identificación: <h:outputText value="#persona.identificacion}"></h:outputText><br/>
+                                                                                            Nombre: <h:outputText value="#persona.nombre1} "></h:outputText> 
+                                                                                            <h:outputText value="#persona.nombre2}"></h:outputText><br/>
+                                                                                            Apellido: <b><h:outputText value="#persona.apellido1} "></h:outputText>
+                                                                                                <h:outputText value="#persona.apellido2}"></h:outputText></b><br/>
+                                                                                                Tipo de documento: <b><h:outputText value="#persona.tipodocumento}"></h:outputText></b>
+                                                                                        </label>
+                                                                                        <h:commandButton class="btn btn-block btn-primary" value="Editar" action="#controllerPersona.actualizarPersona(persona)}"></h:commandButton>                                                    
+                                                                                    </div>
+                                                                                </ui:repeat>
+                                                                            </h:form>
+                                                                        </f:view>-->
                                     <f:view>
-                                        <h:form>                     
-                                            <ui:repeat value="#{controllerPersona.consultarPersona()}" var="persona">
-                                                <div class="col-md-4 list-item">                                                                                                                                                        
-                                                    <label>
-                                                        Identificación: <h:outputText value="#{persona.identificacion}"></h:outputText><br/>
-                                                        Nombre: <h:outputText value="#{persona.nombre1} "></h:outputText> 
-                                                        <h:outputText value="#{persona.nombre2}"></h:outputText><br/>
-                                                        Apellido: <b><h:outputText value="#{persona.apellido1} "></h:outputText>
-                                                            <h:outputText value="#{persona.apellido2}"></h:outputText></b><br/>
-                                                            Tipo de documento: <b><h:outputText value="#{persona.tipodocumento}"></h:outputText></b>
-                                                    </label>
-                                                    <h:commandButton class="btn btn-block btn-primary" value="Editar" action="#{controllerPersona.actualizarPersona(persona)}"></h:commandButton>                                                    
-                                                </div>
-                                            </ui:repeat>
+                                        <h:form>                                            
+                                            <p:dataTable value="#{controllerPersona.consultarPersona()}" var="persona" paginator="true" rows="10">
+                                                <p:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="Identificacion"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{persona.identificacion}"/>
+                                                </p:column>
+                                                <p:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="Nombre1"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{persona.nombre1}"/>
+                                                </p:column>
+                                                <p:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="Nombre2"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{persona.nombre2}"/>
+                                                </p:column>
+                                                <p:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="Apellido1"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{persona.apellido1}"/>
+                                                </p:column>
+                                                <p:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="Apellido2"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{persona.apellido2}"/>
+                                                </p:column>
+                                                <p:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="Tipodocumento"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{persona.tipodocumento}"/>
+                                                </p:column>
+                                                <p:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="Sexo"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{persona.sexo}"/>
+                                                </p:column>
+                                                <p:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="Opciones"/>
+                                                    </f:facet>
+                                                    <h:commandLink value="Editar" action="#{controllerPersona.actualizarPersona(persona)}"></h:commandLink>
+                                                </p:column>
+                                            </p:dataTable>
                                         </h:form>
                                     </f:view>
                                 </div>
@@ -62,7 +118,7 @@
                                     <h:outputLabel value="Segundo apellido:" for="apellido2" />
                                     <h:inputText id="apellido2" value="#{controllerPersona.persona.apellido2}" title="Apellido2" class="form-control" required="true" requiredMessage="The Apellido2 field is required."/>
                                 </div>
-                                
+
                                 <div class="form-group">                                    
                                     <h:outputLabel value="Tipo de documento:" for="tipodocumento" />
                                     <h:selectOneMenu id="tipodocumento" value="#{controllerPersona.persona.tipodocumento}" class="form-control" title="Tipodocumento">

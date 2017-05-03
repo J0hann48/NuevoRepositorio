@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>        
     </h:head>
     <h:body>
@@ -16,7 +17,7 @@
                             <div id="contenido_0">
                                 <div class="listadoUsuarios">
                                     <f:view>
-                                        <h:form>                     
+                                        <h:form>
                                             <ui:repeat value="#{controllerUsuario.consultarUsuarios()}" var="usuario">
                                                 <div class="col-md-4 list-item">                                                                                                                                                        
                                                     <label>
@@ -41,9 +42,9 @@
                         </div>
                         <div class="col-md-2" id="formularioUsuario">
                             <h3 id="tituloFormulario">Agregar Usuario</h3> 
-                            <h:form id="formUsuario">
+                            <h:form id="formUsuario" class="form-group">
 
-                                <div class="form-group hidden" id="nuevoUsuarioDiv">
+                                <div class="form-group hidden" id="nuevoUsuarioDiv">                                    
                                 </div>
                                 <div class="form-group">
                                     <h:outputLabel value="Identificacion:" for="personaidentificacion" />

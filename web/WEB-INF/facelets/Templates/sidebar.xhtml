@@ -48,8 +48,11 @@
                                 <li><a href="http://localhost:8080/ProyectoJardinWeb/faces/Paginas/Sugerencias/listarSugerencias.xhtml">Suggestion</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">                                
-                                <li><h:commandLink action="#{controllerUsuario.logOut()}"><b>Logout</b></h:commandLink></li>
+                                <li><b>Sesion: <h:outputLabel value="#{controllerUsuario.usersesion.personaidentificacion.nombre1}"></h:outputLabel></b></li>
                             </ul>
+                            <ul class="nav navbar-nav navbar-right">                                
+                                <li><h:commandLink action="#{controllerUsuario.logOut()}"><b>Logout</b></h:commandLink></li>
+                            </ul>                            
                         </div>
                     </div>
                 </nav>
