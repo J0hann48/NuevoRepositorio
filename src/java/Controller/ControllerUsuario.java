@@ -96,7 +96,7 @@ public class ControllerUsuario implements Serializable {
     public String actualizarUsuarios() {
         usuario.setPersonaidentificacion(facadepersona.find(persona.getIdentificacion()));
         facadeusuario.edit(usuario);
-//        usuario = new Usuarios();
+        usuario = new Usuarios();
         return "listarUsuarios";
     }
 

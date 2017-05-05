@@ -16,27 +16,80 @@
                         <div class="col-md-10">
                             <div id="contenido_0">
                                 <div class="listadoUsuarios">
-                                    <f:view>
+<!--                                    <f:view>
                                         <h:form>
-                                            <ui:repeat value="#{controllerUsuario.consultarUsuarios()}" var="usuario">
+                                            <ui:repeat value="#controllerUsuario.consultarUsuarios()}" var="usuario">
                                                 <div class="col-md-4 list-item">                                                                                                                                                        
                                                     <label>
-                                                        Identificación: <h:outputText value="#{usuario.personaidentificacion.identificacion}"></h:outputText><br/>                                                        
-                                                        Nombre: <h:outputText value="#{usuario.personaidentificacion.nombre1} "></h:outputText> 
-                                                        <h:outputText value="#{usuario.personaidentificacion.nombre2}"></h:outputText><br/>
-                                                        Apellido: <b><h:outputText value="#{usuario.personaidentificacion.apellido1} "></h:outputText>
-                                                            <h:outputText value="#{usuario.personaidentificacion.apellido2}"></h:outputText></b><br/>
-                                                        Contraseña: <b><h:outputText value="#{usuario.contrasena}"></h:outputText></b><br/>
-                                                        Correo electronico: <b><h:outputText value="#{usuario.mail}"></h:outputText></b><br/>
-                                                        Telefono: <b><h:outputText value="#{usuario.telefono}"></h:outputText></b><br/>
-                                                        Eatado: <b><h:outputText value="#{usuario.estado}"></h:outputText></b><br/>
+                                                        Identificación: <h:outputText value="#usuario.personaidentificacion.identificacion}"></h:outputText><br/>                                                        
+                                                        Nombre: <h:outputText value="#usuario.personaidentificacion.nombre1} "></h:outputText> 
+                                                        <h:outputText value="#usuario.personaidentificacion.nombre2}"></h:outputText><br/>
+                                                        Apellido: <b><h:outputText value="#usuario.personaidentificacion.apellido1} "></h:outputText>
+                                                            <h:outputText value="#usuario.personaidentificacion.apellido2}"></h:outputText></b><br/>
+                                                        Contraseña: <b><h:outputText value="#usuario.contrasena}"></h:outputText></b><br/>
+                                                        Correo electronico: <b><h:outputText value="#usuario.mail}"></h:outputText></b><br/>
+                                                        Telefono: <b><h:outputText value="#usuario.telefono}"></h:outputText></b><br/>
+                                                        Eatado: <b><h:outputText value="#usuario.estado}"></h:outputText></b><br/>
                                                     </label>
-                                                    <h:commandButton class="btn btn-block btn-primary" value="Editar" action="#{controllerUsuario.actualizarUsuarios(usuario)}"></h:commandButton>
-                                                    <h:commandButton class="btn btn-block btn-danger" value="Eliminar" action="#{controllerUsuario.eliminarUsuario(usuario)}"></h:commandButton>                                                    
+                                                    <h:commandButton class="btn btn-block btn-primary" value="Editar" action="#controllerUsuario.actualizarUsuarios(usuario)}"></h:commandButton>
+                                                    <h:commandButton class="btn btn-block btn-danger" value="Eliminar" action="#controllerUsuario.eliminarUsuario(usuario)}"></h:commandButton>                                                    
                                                 </div>
                                             </ui:repeat>
                                         </h:form>
-                                    </f:view>
+                                    </f:view>-->
+<f:view>
+
+
+    <h:form>
+        <h1><h:outputText value="List"/></h1>
+        <p:dataTable value="#{controllerUsuario.consultarUsuarios()}" var="usuario">
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Idusuario"/>
+                </f:facet>
+                <h:outputText value="#{usuario.idusuario}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Contrasena"/>
+                </f:facet>
+                <h:outputText value="#{usuario.contrasena}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Mail"/>
+                </f:facet>
+                <h:outputText value="#{usuario.mail}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Estado"/>
+                </f:facet>
+                <h:outputText value="#{usuario.estado}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Telefono"/>
+                </f:facet>
+                <h:outputText value="#{usuario.telefono}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Personaidentificacion"/>
+                </f:facet>
+                <h:outputText value="#{usuario.personaidentificacion.apellido1}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Opciones"/>
+                </f:facet>
+                <h:commandLink value="Editar" action="#{controllerUsuario.actualizarUsuarios(usuario)}"></h:commandLink>
+                <h:commandLink value="Eliminar" action="#{controllerUsuario.eliminarUsuario(usuario)}"></h:commandLink>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+</f:view>
+
                                 </div>
                             </div>
                         </div>
