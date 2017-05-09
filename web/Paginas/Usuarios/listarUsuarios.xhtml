@@ -42,7 +42,7 @@
 
     <h:form>
         <h1><h:outputText value="List"/></h1>
-        <p:dataTable value="#{controllerUsuario.consultarUsuarios()}" var="usuario">
+        <p:dataTable value="#{controllerUsuario.consultarUsuarios()}" var="usuario" paginator="true" rows="10">
             <p:column>
                 <f:facet name="header">
                     <h:outputText value="Idusuario"/>

@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>        
     </h:head>
     <h:body>        
@@ -15,20 +16,47 @@
                         <div class="col-md-10">
                             <div id="contenido_0">
                                 <div class="listadoUsuarios">
-                                    <f:view>
+                                    
+<!--                                    <f:view>
                                         <h:form>                     
-                                            <ui:repeat value="#{controllerAsignatura.consultarAsignatura()}" var="asignatura">
+                                            <ui:repeat value="#controllerAsignatura.consultarAsignatura()}" var="asignatura">
                                                 <div class="col-md-4 list-item">                                                                                                                                                        
                                                     <label>
-                                                        Id Asignatura<h:outputText value="#{asignatura.idasignatura}"></h:outputText><br/>
-                                                        Asignatura: <b><h:outputText value="#{asignatura.nombre} "></h:outputText></b>
+                                                        Id Asignatura<h:outputText value="#asignatura.idasignatura}"></h:outputText><br/>
+                                                        Asignatura: <b><h:outputText value="#asignatura.nombre} "></h:outputText></b>
                                                     </label>
-                                                    <h:commandButton class="btn btn-block btn-primary" value="Editar" action="#{controllerAsignatura.actualizarAsignatura(asignatura)}"></h:commandButton>
-                                                    <h:commandButton class="btn btn-block btn-danger" value="Eliminar" action="#{controllerAsignatura.eliminarAsignatura(asignatura)}"></h:commandButton>                                                    
+                                                    <h:commandButton class="btn btn-block btn-primary" value="Editar" action="#controllerAsignatura.actualizarAsignatura(asignatura)}"></h:commandButton>
+                                                    <h:commandButton class="btn btn-block btn-danger" value="Eliminar" action="#controllerAsignatura.eliminarAsignatura(asignatura)}"></h:commandButton>                                                    
                                                 </div>
                                             </ui:repeat>
                                         </h:form>
-                                    </f:view>
+                                    </f:view>-->
+<f:view>
+    <h:form>        
+        <p:dataTable value="#{controllerAsignatura.consultarAsignatura()}" var="asignatura" paginator="true" rows="10" >
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Idasignatura"/>
+                </f:facet>
+                <h:outputText value="#{asignatura.idasignatura}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Nombre"/>
+                </f:facet>
+                <h:outputText value="#{asignatura.nombre}"/>
+            </p:column>
+             <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Opciones"/>
+                </f:facet>
+                 <h:commandLink value="Editar" action="#{controllerAsignatura.actualizarAsignatura(asignatura)}"></h:commandLink>
+                 <h:commandLink value="Eliminar" action="#{controllerAsignatura.eliminarAsignatura(asignatura)}"></h:commandLink>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+</f:view>
+
                                 </div>
                             </div>
                         </div>

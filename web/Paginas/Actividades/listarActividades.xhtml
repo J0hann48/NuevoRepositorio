@@ -3,8 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"      
+      xmlns:p="http://primefaces.org/ui">
     <h:head>        
     </h:head>
     <h:body>
@@ -16,23 +16,76 @@
                         <div class="col-md-10">
                             <div id="contenido_0">
                                 <div class="listadoUsuarios">
-                                    <f:view>
+<!--                                    <f:view>
                                         <h:form>                     
-                                            <ui:repeat value="#{controllerActividad.consultarActividades()}" var="actividad">
+                                            <ui:repeat value="#controllerActividad.consultarActividades()}" var="actividad">
                                                 <div class="col-md-4 list-item">                                                                                                                                                        
                                                     <label>
-                                                        Nombre actividad: <h:outputText value="#{actividad.nombre}"></h:outputText><br/>                                                        
-                                                        Fecha actividad: <b><h:outputText value="#{actividad.fechaact}"><f:convertDateTime pattern="MM/dd/yyyy" /></h:outputText></b><br/>
-                                                        Lugar actividad: <b><h:outputText value="#{actividad.lugaract} "></h:outputText></b><br/>
-                                                            Costo: <b><h:outputText value="#{actividad.costoact}"></h:outputText></b><br/>
-                                                            Jardin: <b><h:outputText value="#{actividad.jardinidjardin.nombre}"></h:outputText></b><br/>                                                        
+                                                        Nombre actividad: <h:outputText value="#actividad.nombre}"></h:outputText><br/>                                                        
+                                                        Fecha actividad: <b><h:outputText value="#actividad.fechaact}"><f:convertDateTime pattern="MM/dd/yyyy" /></h:outputText></b><br/>
+                                                        Lugar actividad: <b><h:outputText value="#actividad.lugaract} "></h:outputText></b><br/>
+                                                            Costo: <b><h:outputText value="#actividad.costoact}"></h:outputText></b><br/>
+                                                            Jardin: <b><h:outputText value="#actividad.jardinidjardin.nombre}"></h:outputText></b><br/>                                                        
                                                     </label>
-                                                    <h:commandButton class="btn btn-block btn-primary" value="Editar" action="#{controllerActividad.actualizarActivida(actividad)}"></h:commandButton>
-                                                    <h:commandButton class="btn btn-block btn-danger" value="Eliminar" action="#{controllerActividad.eliminarActividad(actividad)}"></h:commandButton>                                                    
+                                                    <h:commandButton class="btn btn-block btn-primary" value="Editar" action="#controllerActividad.actualizarActividad(actividad)}"></h:commandButton>
+                                                    <h:commandButton class="btn btn-block btn-danger" value="Eliminar" action="#controllerActividad.eliminarActividad(actividad)}"></h:commandButton>                                                    
                                                 </div>
                                             </ui:repeat>
                                         </h:form>
-                                    </f:view>
+                                    </f:view> -->
+
+<f:view>
+    <h:form>       
+        <p:dataTable value="#{controllerActividad.consultarActividades()}" var="actividad" paginator="true" rows="10" >
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Idactividad"/>
+                </f:facet>
+                <h:outputText value="#{actividad.idactividad}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Nombre"/>
+                </f:facet>
+                <h:outputText value="#{actividad.nombre}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Lugaract"/>
+                </f:facet>
+                <h:outputText value="#{actividad.lugaract}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Fechaact"/>
+                </f:facet>
+                <h:outputText value="#{actividad.fechaact}">
+                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                </h:outputText>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Costoact"/>
+                </f:facet>
+                <h:outputText value="#{actividad.costoact}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Jardinidjardin"/>
+                </f:facet>
+                <h:outputText value="#{actividad.jardinidjardin.nombre}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Opciones"/>
+                </f:facet>
+                <h:commandLink value="Editar  " action="#{controllerActividad.actualizarActividad(actividad)}"></h:commandLink>
+                <h:commandLink value="Eliminar" action="#{controllerActividad.eliminarActividad(actividad)}"></h:commandLink>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+</f:view>
+
                                 </div>
                             </div>
                         </div>
@@ -73,7 +126,7 @@
                                 </div>                                
                                 <div class="form-group">
                                     <h:commandButton value="Registrar" id="btnUsuarioAgregar" class="btn btn-block btn-info" action="#{controllerActividad.crearActividad()}"></h:commandButton>
-                                    <h:commandButton value="Editar" id="btnUsuarioEditar" class="btn btn-block btn-warning" action="#{controllerActividad.actualizarActivida()}"></h:commandButton>                                    
+                                    <h:commandButton value="Editar" id="btnUsuarioEditar" class="btn btn-block btn-warning" action="#{controllerActividad.actualizarActividad()}"></h:commandButton>
                                 </div>
                             </h:form>
                         </div>

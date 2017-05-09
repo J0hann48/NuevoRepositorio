@@ -66,7 +66,8 @@ public class ControllerAsignatura implements Serializable {
         return "listarAsignaturas";
     }
     public String actualizarAsignatura(){
-        facadeasignatura.edit(asignatura);    
+        facadeasignatura.edit(asignatura);  
+        asignatura = new Asignaturas();
         return "listarAsignaturas";
     }
     public void eliminarAsignatura(Asignaturas asignatura){

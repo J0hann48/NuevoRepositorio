@@ -99,6 +99,7 @@ public class ControllerAlumno implements Serializable {
         alumno.setPersonaidentificacion(facadepersona.find(persona.getIdentificacion()));
         alumno.setPadrefamiliaidentificacion(facadepadrefamilia.find(padrefamilia.getIdpadrefamilia()));
         facadealumno.edit(alumno);
+        alumno = new Alumnos();
         return "listarAlumnos";
     }
     public void eliminarAlumnos(Alumnos alumno){

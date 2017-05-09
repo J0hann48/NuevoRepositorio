@@ -28,17 +28,19 @@ public class ControllerActividad implements Serializable {
     ActividadesFacade facadeActividad;
     @EJB
     JardinesFacade facadejardin;
-    
+
     private Actividades actividad;
     private Jardines jardines;
     private List<Actividades> listaActividades;
+
     /**
      * Creates a new instance of ControllerActividad
      */
     public ControllerActividad() {
     }
+
     @PostConstruct
-    public  void init(){
+    public void init() {
         actividad = new Actividades();
         jardines = new Jardines();
     }
@@ -66,27 +68,32 @@ public class ControllerActividad implements Serializable {
     public void setListaActividades(List<Actividades> listaActividades) {
         this.listaActividades = listaActividades;
     }
-    public String crearActividad(){
+
+    public String crearActividad() {
         actividad.setJardinidjardin(facadejardin.find(jardines.getIdjardin()));
         facadeActividad.create(actividad);
-        actividad = new Actividades();  
+        actividad = new Actividades();
         return "listarActividades";
     }
-    public List<Actividades> consultarActividades(){
+
+    public List<Actividades> consultarActividades() {
         this.listaActividades = facadeActividad.findAll();
         return listaActividades;
     }
-    public String actualizarActivida(Actividades actividad){
+
+    public String actualizarActividad(Actividades actividad) {
         this.actividad = actividad;
         return "listarActividades";
     }
-    public String actualizarActivida(){
+
+    public String actualizarActividad() {
         actividad.setJardinidjardin(facadejardin.find(jardines.getIdjardin()));
         facadeActividad.edit(actividad);
         actividad = new Actividades();
         return "listarActividades";
     }
-    public void eliminarActividad(Actividades actividad){
+
+    public void eliminarActividad(Actividades actividad) {
         facadeActividad.remove(actividad);
     }
 }
