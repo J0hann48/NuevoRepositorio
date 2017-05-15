@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>        
     </h:head>
     <h:body>
@@ -16,31 +17,89 @@
                         <div class="col-md-10">
                             <div id="contenido_0">
                                 <div class="listadoAlumnos">
-                                    <f:view>
+<!--                                    <f:view>
                                         <h:form>
-                                            <h:commandLink class="btn btn-block btn-warning" action="#{controllerNutricion.exportExcel()}">
+                                            <h:commandLink class="btn btn-block btn-warning" action="#controllerNutricion.exportExcel()}">
                                                 <h:outputText value="Exportar"/>
                                             </h:commandLink>
-                                            <ui:repeat value="#{controllerNutricion.consultarNutricionalumnos()}" var="nutricion">
+                                            <ui:repeat value="#controllerNutricion.consultarNutricionalumnos()}" var="nutricion">
                                                 <div class="col-md-4 list-item">                                                                                                                                                        
                                                     <label>
-                                                        <h:outputText value="#{nutricion.idnutricionalumno}"></h:outputText><br/>
-                                                        Identificación: <h:outputText value="#{nutricion.alumnosidentificacion.personaidentificacion.identificacion}"></h:outputText><br/>
-                                                        Nombre: <h:outputText value="#{nutricion.alumnosidentificacion.personaidentificacion.nombre1} "></h:outputText>
-                                                        <h:outputText value="#{nutricion.alumnosidentificacion.personaidentificacion.nombre2}"></h:outputText><br/>
-                                                        Apellido: <b><h:outputText value="#{nutricion.alumnosidentificacion.personaidentificacion.apellido1} "></h:outputText>
-                                                            <h:outputText value="#{nutricion.alumnosidentificacion.personaidentificacion.apellido2}"></h:outputText></b><br/>
-                                                        Fecha de ingreso nutricion: <b><h:outputText value="#{nutricion.fechaingresonutricion}"><f:convertDateTime pattern="MM/dd/yyyy" /></h:outputText></b><br/>
-                                                        Estatura: <b><h:outputText value="#{nutricion.estatura}"></h:outputText></b><br/>
-                                                        Talla: <b><h:outputText value="#{nutricion.talla}"></h:outputText></b><br/>
-                                                        Peso: <b><h:outputText value="#{nutricion.peso}"></h:outputText></b><br/>
+                                                        <h:outputText value="#nutricion.idnutricionalumno}"></h:outputText><br/>
+                                                        Identificación: <h:outputText value="#nutricion.alumnosidentificacion.personaidentificacion.identificacion}"></h:outputText><br/>
+                                                        Nombre: <h:outputText value="#nutricion.alumnosidentificacion.personaidentificacion.nombre1} "></h:outputText>
+                                                        <h:outputText value="#nutricion.alumnosidentificacion.personaidentificacion.nombre2}"></h:outputText><br/>
+                                                        Apellido: <b><h:outputText value="#nutricion.alumnosidentificacion.personaidentificacion.apellido1} "></h:outputText>
+                                                            <h:outputText value="#nutricion.alumnosidentificacion.personaidentificacion.apellido2}"></h:outputText></b><br/>
+                                                        Fecha de ingreso nutricion: <b><h:outputText value="#nutricion.fechaingresonutricion}"><f:convertDateTime pattern="MM/dd/yyyy" /></h:outputText></b><br/>
+                                                        Estatura: <b><h:outputText value="#nutricion.estatura}"></h:outputText></b><br/>
+                                                        Talla: <b><h:outputText value="#nutricion.talla}"></h:outputText></b><br/>
+                                                        Peso: <b><h:outputText value="{nutricion.peso}"></h:outputText></b><br/>
                                                     </label>
-                                                    <h:commandButton class="btn btn-block btn-primary" value="Editar" action="#{controllerNutricion.actualizarNutricionalumno(nutricion)}"></h:commandButton>
-                                                    <h:commandButton class="btn btn-block btn-danger" value="Eliminar" action="#{controllerNutricion.eliminarNutricionalumno(nutricion)}"></h:commandButton>                                                    
+                                                    <h:commandButton class="btn btn-block btn-primary" value="Editar" action="#controllerNutricion.actualizarNutricionalumno(nutricion)}"></h:commandButton>
+                                                    <h:commandButton class="btn btn-block btn-danger" value="Eliminar" action="#controllerNutricion.eliminarNutricionalumno(nutricion)}"></h:commandButton>                                                    
                                                 </div>
                                             </ui:repeat>
                                         </h:form>
-                                    </f:view>
+                                    </f:view>-->
+<f:view>
+    <h:form>        
+        <p:dataTable value="#{controllerNutricion.consultarNutricionalumnos()}" var="nutricion" paginator="true" rows="10">
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Id nutricion alumno"/>
+                </f:facet>
+                <h:outputText value="#{nutricion.idnutricionalumno}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Peso"/>
+                </f:facet>
+                <h:outputText value="#{nutricion.peso}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Talla"/>
+                </f:facet>
+                <h:outputText value="#{nutricion.talla}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Estatura"/>
+                </f:facet>
+                <h:outputText value="#{nutricion.estatura}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Fecha ingreso nutricion"/>
+                </f:facet>
+                <h:outputText value="#{nutricion.fechaingresonutricion}">
+                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                </h:outputText>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Edad"/>
+                </f:facet>
+                <h:outputText value="#{nutricion.idcrecimientodesarrollo.edad}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Alumno"/>
+                </f:facet>
+                <h:outputText value="#{nutricion.alumnosidentificacion.personaidentificacion.nombre1}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Opciones"/>
+                </f:facet>
+                <h:commandLink value="Editar" action="#{controllerNutricion.actualizarNutricionalumno(nutricion)}"></h:commandLink>
+                <h:commandLink value="Eliminar" action="#{controllerNutricion.eliminarNutricionalumno(nutricion)}"></h:commandLink>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+</f:view>
+
                                 </div>
                             </div>
                         </div>

@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>        
     </h:head>
     <h:body>
@@ -16,29 +17,91 @@
                         <div class="col-md-10">
                             <div id="contenido_0">
                                 <div class="listadoUsuarios">
-                                    <f:view>
+<!--                                    <f:view>
                                         <h:form>                     
-                                            <ui:repeat value="#{controllerMatricula.consultarMatriculas()}" var="matricula">
+                                            <ui:repeat value="#controllerMatricula.consultarMatriculas()}" var="matricula">
                                                 <div class="col-md-4 list-item">                                                                                                                                                        
                                                     <label>
-                                                        Identificación: <h:outputText value="#{matricula.alumnosidentificacion.personaidentificacion.identificacion}"></h:outputText><br/>                                                        
-                                                        Nombre: <h:outputText value="#{matricula.alumnosidentificacion.personaidentificacion.nombre1} "></h:outputText> 
-                                                        <h:outputText value="#{matricula.alumnosidentificacion.personaidentificacion.nombre2}"></h:outputText><br/>
-                                                        Apellido: <b><h:outputText value="#{matricula.alumnosidentificacion.personaidentificacion.apellido1} "></h:outputText>
-                                                            <h:outputText value="#{matricula.alumnosidentificacion.personaidentificacion.apellido2}"></h:outputText></b><br/>
-                                                        Fecha: matricula <b><h:outputText value="#{matricula.fechamatricula}"><f:convertDateTime pattern="MM/dd/yyyy" /></h:outputText></b><br/>
-                                                        Fecha fin matricula <b><h:outputText value="#{matricula.fechafinmatricula}"><f:convertDateTime pattern="MM/dd/yyyy" /></h:outputText></b><br/>
-                                                        Valor matricula: <b><h:outputText value="#{matricula.valormatricula}"></h:outputText></b><br/>
-                                                        Descuento: <b><h:outputText value="#{matricula.descuento}"></h:outputText></b><br/>
-                                                        Valor total matricula: <b><h:outputText value="#{matricula.totalMatricula}"></h:outputText></b><br/>
-                                                        Jardin: <b><h:outputText value="#{matricula.jardinidjardin.nombre}"></h:outputText></b>
+                                                        Identificación: <h:outputText value="#matricula.alumnosidentificacion.personaidentificacion.identificacion}"></h:outputText><br/>                                                        
+                                                        Nombre: <h:outputText value="#matricula.alumnosidentificacion.personaidentificacion.nombre1} "></h:outputText> 
+                                                        <h:outputText value="#matricula.alumnosidentificacion.personaidentificacion.nombre2}"></h:outputText><br/>
+                                                        Apellido: <b><h:outputText value="#matricula.alumnosidentificacion.personaidentificacion.apellido1} "></h:outputText>
+                                                            <h:outputText value="#matricula.alumnosidentificacion.personaidentificacion.apellido2}"></h:outputText></b><br/>
+                                                        Fecha: matricula <b><h:outputText value="#matricula.fechamatricula}"><f:convertDateTime pattern="MM/dd/yyyy" /></h:outputText></b><br/>
+                                                        Fecha fin matricula <b><h:outputText value="#matricula.fechafinmatricula}"><f:convertDateTime pattern="MM/dd/yyyy" /></h:outputText></b><br/>
+                                                        Valor matricula: <b><h:outputText value="#matricula.valormatricula}"></h:outputText></b><br/>
+                                                        Descuento: <b><h:outputText value="#matricula.descuento}"></h:outputText></b><br/>
+                                                        Valor total matricula: <b><h:outputText value="#matricula.totalMatricula}"></h:outputText></b><br/>
+                                                        Jardin: <b><h:outputText value="#matricula.jardinidjardin.nombre}"></h:outputText></b>
                                                     </label>
-                                                    <h:commandButton class="btn btn-block btn-primary" value="Editar" action="#{controllerMatricula.actualizarMatricula(matricula)}"></h:commandButton>
-                                                    <h:commandButton class="btn btn-block btn-danger" value="Eliminar" action="#{controllerMatricula.eliminarMatricula(matricula)}"></h:commandButton>                                                    
+                                                    <h:commandButton class="btn btn-block btn-primary" value="Editar" action="#controllerMatricula.actualizarMatricula(matricula)}"></h:commandButton>
+                                                    <h:commandButton class="btn btn-block btn-danger" value="Eliminar" action="#controllerMatricula.eliminarMatricula(matricula)}"></h:commandButton>                                                    
                                                 </div>
                                             </ui:repeat>
                                         </h:form>
-                                    </f:view>
+                                    </f:view>-->
+<f:view>
+
+
+    <h:form>
+        <h1><h:outputText value="List"/></h1>
+        <p:dataTable value="#{controllerMatricula.consultarMatriculas()}" var="matricula" paginator="true" rows="10">
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Fecha matricula"/>
+                </f:facet>
+                <h:outputText value="#{matricula.fechamatricula}">
+                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                </h:outputText>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Fecha fi nmatricula"/>
+                </f:facet>
+                <h:outputText value="#{matricula.fechafinmatricula}">
+                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                </h:outputText>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Valor matricula"/>
+                </f:facet>
+                <h:outputText value="#{matricula.valormatricula}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Descuento"/>
+                </f:facet>
+                <h:outputText value="#{matricula.descuento}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Total Matricula"/>
+                </f:facet>
+                <h:outputText value="#{matricula.totalMatricula}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Alumno"/>
+                </f:facet>
+                <h:outputText value="#{matricula.alumnosidentificacion.personaidentificacion.nombre1}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Jardin"/>
+                </f:facet>
+                <h:outputText value="#{matricula.jardinidjardin.nombre}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Opciones"/>
+                </f:facet>
+                <h:commandLink value="Editar" action="#{controllerMatricula.actualizarMatricula(matricula)}"></h:commandLink>
+                <h:commandLink value="Eliminar" action="#{controllerMatricula.eliminarMatricula(matricula)}"></h:commandLink>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+</f:view>
                                 </div>
                             </div>
                         </div>

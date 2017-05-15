@@ -99,6 +99,7 @@ public class ControllerMatricula implements Serializable {
         matricula.setAlumnosidentificacion(facadealumno.find(alumno.getIdalumno()));
         matricula.setJardinidjardin(facadejardin.find(jardin.getIdjardin()));
         facadematricula.edit(matricula);
+        matricula = new Matricula();
         return "listarMatriculas";
     }
     public void eliminarMatricula(Matricula matricula){
