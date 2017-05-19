@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>SIIC</title>       
         <h:outputStylesheet library="css" name="bootstrap.min.css"/>
@@ -19,7 +20,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     </h:head>
     <h:body>
-        <!-- Modal -->
+        <!-- Modal solicitud registro-->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -47,37 +48,7 @@
                                 <div class="col-sm-6">
                                     <input type="email" class="form-control" id="acudienteCorreo" name="acudienteCorreo" placeholder="Su Correo" />
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-6 control-label">Numero Celular</label>
-                                <div class="col-sm-6">
-                                    <input type="number" class="form-control" id="acudienteCelular" name="acudienteCelular" placeholder="Su Celular" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-6 control-label">Direccion Residencia</label>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="acudienteResidenciaDireccion" name="acudienteResidenciaDireccion" placeholder="Su Direccion Residencia" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-6 control-label">Telefono Residencia</label>
-                                <div class="col-sm-6">
-                                    <input type="number" class="form-control" id="acudienteResidenciaTelefono" name="acudienteResidenciaTelefono" placeholder="Su Direccion Residencia" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-6 control-label">Direccion Trabajo</label>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="acudienteTrabajoDireccion" name="acudienteTrabajoDireccion" placeholder="Su Direccion Residencia" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-6 control-label">Telefono Trabajo</label>
-                                <div class="col-sm-6">
-                                    <input type="number" class="form-control" id="acudienteTrabajoTelefono" name="acudienteTrabajoTelefono" placeholder="Su Direccion Residencia" />
-                                </div>
-                            </div>
+                            </div>                            
                             <h3>Datos Estudiante</h3>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-6 control-label">Nombre Completo</label>
@@ -100,7 +71,37 @@
                 </div>
             </div>
         </div>
-        <!--/Modal -->
+        <!--/Modal solicitud registro-->
+        <!--        Modal solicitud de contraseña-->
+        <div class="modal fade" id="modalClave" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">¿Olvido su contraseña?</h4>
+                    </div>
+                    <div class="modal-body">                        
+                        <h:form class="form-horizontal" id="formularioRegistro">                            
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-6 control-label">Correo Electronico</label>
+                                <div class="col-sm-6">
+                                    <h:inputText class="form-control" id="acudienteCorreo" value="#{controllerUsuario.usuario.mail}" validatorMessage="Digito mal el correo">
+                                        <f:validateRegex
+                                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                    </h:inputText>                                    
+                                </div>
+                            </div>
+                            <h:commandButton class="btn btn-primary btn-sm" value="Aceptar" action="#{controllerUsuario.olvidoClave()}"></h:commandButton>
+                        </h:form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--        Modal solicitud de contraseña-->
         <div class="container-fluid">
             <div class="row">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -181,12 +182,14 @@
                     <h:outputLabel for="inputPassword" class="sr-only" value="Contraseña"></h:outputLabel>                                                
                     <h:inputSecret id="loginClave" class="form-control" value="#{controllerUsuario.usuario.contrasena}" pt:placeholder="Contraseña" required="true"/>                    
                     <h:commandButton value="ingresar" class="btn btn-sm btn-primary btn-block" action="#{controllerUsuario.login()}"></h:commandButton>
-                    <div id="loginStatus"></div>
+                    <div id="loginStatus">
+                        <a data-toggle="modal" data-target="#modalClave">¿Olvido su contraseña?</a>
+                    </div>
                 </h:form>                
             </div>
         </div>
-        <script src="resources/js/jquery-1.11.3.min.js" type="text/javascript"></script>
-        <script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="resources/js/jquery-fancybox-pack.js" type="text/javascript"></script>        
+        <h:outputScript library="js" name="jquery-1.11.3.min.js"></h:outputScript>
+        <h:outputScript library="js" name="bootstrap.min.js"></h:outputScript>
+        <h:outputScript library="js" name="jquery-fancybox-pack.js"></h:outputScript>                
     </h:body>
 </html>

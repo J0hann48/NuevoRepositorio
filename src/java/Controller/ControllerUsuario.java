@@ -13,6 +13,7 @@ import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -135,6 +136,14 @@ public class ControllerUsuario implements Serializable {
             FacesContext.getCurrentInstance().getExternalContext().redirect(redireccion);
         }
 //        return redireccion;
+    }
+
+    public void olvidoClave() throws UnsupportedEncodingException {
+        Usuarios user = new Usuarios();
+        user = facadeusuario.validarUsuario(this.usuario);
+        String mensaje = "Su contraseña ha sido modificada con exito, su nueva contraseña  es: " + user.getContrasena();
+        Mailer.send(usuario.getMail(), "Cambio de contraseña", mensaje);
+        System.out.println("El usuario no existe o su contraseña no fue modificada");
     }
 
     public void logOut() throws IOException {

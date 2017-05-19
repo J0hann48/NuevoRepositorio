@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Johann48/Documents/NetBeansProjects/ProyectoJardinWeb/src/java/Controller/ControllerPadrefamilia.java</file>
-            <file>file:/C:/Users/Johann48/Documents/NetBeansProjects/ProyectoJardinWeb/web/Paginas/PadresdeFamilia/listarPadresfamilia.xhtml</file>
+            <file>file:/C:/Users/Johann48/Documents/NetBeansProjects/ProyectoJardinWeb/src/java/Controller/ControllerUsuario.java</file>
+            <file>file:/C:/Users/Johann48/Documents/NetBeansProjects/ProyectoJardinWeb/src/java/Facade/UsuariosFacade.java</file>
+            <file>file:/C:/Users/Johann48/Documents/NetBeansProjects/ProyectoJardinWeb/web/index.xhtml</file>
+            <file>file:/C:/Users/Johann48/Documents/NetBeansProjects/ProyectoJardinWeb/src/java/Controller/Mailer.java</file>
         </group>
     </open-files>
 </project-private>

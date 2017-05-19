@@ -5,8 +5,10 @@
  */
 package Controller;
 
-import Entitys.Permiso;
-import Facade.PermisoFacade;
+
+
+import Entitys.Permisos;
+import Facade.PermisosFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -23,10 +25,10 @@ import javax.ejb.EJB;
 public class ControllerPermiso implements Serializable {
 
     @EJB
-    PermisoFacade facadepermiso;
+    PermisosFacade facadepermiso;
     
-    Permiso permiso;
-    List<Permiso> listapermiso;
+    Permisos permiso;
+    List<Permisos> listapermiso;
     /**
      * Creates a new instance of ControllerPermiso
      */
@@ -34,42 +36,44 @@ public class ControllerPermiso implements Serializable {
     }
     @PostConstruct
     public void init(){
-        permiso = new Permiso();
+        permiso = new Permisos();
     }
 
-    public Permiso getPermiso() {
+    public Permisos getPermiso() {
         return permiso;
     }
 
-    public void setPermiso(Permiso permiso) {
+    public void setPermiso(Permisos permiso) {
         this.permiso = permiso;
     }
 
-    public List<Permiso> getListapermiso() {
+    public List<Permisos> getListapermiso() {
         return listapermiso;
     }
 
-    public void setListapermiso(List<Permiso> listapermiso) {
+    public void setListapermiso(List<Permisos> listapermiso) {
         this.listapermiso = listapermiso;
     }
     public String crearPermiso(){
+        permiso.setPermisoHijo(facadepermiso.find(permiso.getIdpermiso()));
         facadepermiso.create(permiso);
-        permiso = new Permiso();
+        permiso = new Permisos();
         return "listarPermisos";
     }
-    public List<Permiso> consultarPermiso(){
+    public List<Permisos> consultarPermiso(){
         this.listapermiso = facadepermiso.findAll();
         return listapermiso;
     }
     public String actualizarPermiso(){
+        permiso.setPermisoHijo(facadepermiso.find(permiso.getIdpermiso()));
         facadepermiso.edit(permiso);
         return "listarPermisos";
     }
-    public String actualizarPermiso(Permiso permiso){
+    public String actualizarPermiso(Permisos permiso){
         this.permiso = permiso;
         return "editarPermiso";
     }
-    public void eliminarPermiso(Permiso permiso){
+    public void eliminarPermiso(Permisos permiso){
         facadepermiso.remove(permiso);
     }
 }
