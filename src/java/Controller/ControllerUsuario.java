@@ -82,9 +82,12 @@ public class ControllerUsuario implements Serializable {
         this.usersesion = usersesion;
     }
 
-    public String crearUsuarios() {
+    public String crearUsuarios() throws UnsupportedEncodingException {
         usuario.setPersonaidentificacion(facadepersona.find(persona.getIdentificacion()));
         facadeusuario.create(usuario);
+        String mensaje = "Su correo es: " + usuario.getMail() + "<br/>" + "Su contraseña es: " + usuario.getContrasena()
+                + "<br/>" + "Bienvenido";
+        Mailer.send(usuario.getMail(), "Usuario jardin", mensaje);
         usuario = new Usuarios();
         return "listarUsuarios";
     }

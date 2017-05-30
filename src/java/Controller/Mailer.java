@@ -82,6 +82,6 @@ public class Mailer {
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
-
+        
     }
 }
