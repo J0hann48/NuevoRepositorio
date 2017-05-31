@@ -12,6 +12,7 @@ import Facade.JardinesFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -69,10 +70,15 @@ public class ControllerActividad implements Serializable {
         this.listaActividades = listaActividades;
     }
 
-    public String crearActividad() {
+    public String crearActividad() throws UnsupportedEncodingException {
         actividad.setJardinidjardin(facadejardin.find(jardines.getIdjardin()));
         facadeActividad.create(actividad);
-        actividad = new Actividades();
+        String correoAct = facadeActividad.correoActividades();
+        String mensaje = "Papitos el jardin " + actividad.getJardinidjardin().getNombre() +" les informa que se realizará una actividad pedagogica y para nosotros  es importante contar con ustedes,"
+                + " la salida será la fecha " + actividad.getFechaact() + " a " + actividad.getLugaract() + " y tiene un costo de " + actividad.getCostoact()
+                + " contamos con la asitencia de su hijo, Gracias por su atención";
+        Mailer.send(correoAct, "Actividad jardin", mensaje);
+        actividad = new Actividades();        
         return "listarActividades";
     }
 
